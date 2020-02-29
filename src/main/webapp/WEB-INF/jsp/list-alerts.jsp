@@ -131,7 +131,7 @@
 								value="${alertData.resolutionPlanToClose}"></td>
 							<td>${alertData.executionStep}</td>
 							<td><a type="button" class="btn btn-success"
-								href="/update-alert?id=${alertData.ewsID}">Update</a></td>
+								href="/update-alerts?${alertData}">Update</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
