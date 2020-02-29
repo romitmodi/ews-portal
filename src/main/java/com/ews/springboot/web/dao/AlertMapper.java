@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.ews.springboot.web.model.Alerts;
 
@@ -24,4 +25,14 @@ public interface AlertMapper {
 			+ "	group by Jobname, JobDescription, rundate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose\r\n"
 			+ "	order by JobName")
 	List<Alerts> getAlertDataBasedOnStatus();
+
+	@Update("update ds.CommandCenter_EWS_EarlyWarningSystem\r\n"
+			+ "    set    Classification=#{alert.classification},\r\n" + "           Measure=#{alert.measure},\r\n"
+			+ "           Summary=#{alert.summary},\r\n" + "           DetailComments=#{alert.detailComments},\r\n"
+			+ "           Severity=#{alert.severity},\r\n" + "           RallyDefect=#{alert.rallyDefect},\r\n"
+			+ "           ServiceNowTix=#{alert.serviceNowTix},\r\n" + "           Status=#{alert.status},\r\n"
+			+ "           Owner=#{alert.owner},\r\n"
+			+ "           Resolution_PlanToClose=#{alert.resolutionPlanToClose}\r\n"
+			+ "    where rundate = #{alert.rundate} and jobname = #{alert.jobName}")
+	void updateAlertDetails(@Param("alert") Alerts alerts);
 }

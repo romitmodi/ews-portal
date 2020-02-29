@@ -22,4 +22,9 @@ public class AlertService {
 	public List<Alerts> getAlertListbyStatus() {
 		return alertMapper.getAlertDataBasedOnStatus();
 	}
+
+	public void updateAlertDetails(Alerts alerts) {
+		alertMapper.updateAlertDetails(alerts);
+	}
+
 }
