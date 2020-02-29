@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Alerts {
 
-	private int esId;
+	private int ewsID;
 	private int dsId;
 	private String jobName;
 	private String jobDescription;
@@ -30,12 +30,12 @@ public class Alerts {
 	private String owner;
 	private String resolutionPlanToClose;
 
-	public int getEsId() {
-		return esId;
+	public int getEwsID() {
+		return ewsID;
 	}
 
-	public void setEsId(int esId) {
-		this.esId = esId;
+	public void setEwsID(int ewsID) {
+		this.ewsID = ewsID;
 	}
 
 	public int getDsId() {
