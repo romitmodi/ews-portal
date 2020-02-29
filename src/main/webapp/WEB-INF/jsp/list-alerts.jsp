@@ -6,7 +6,7 @@
 	<form:form id="searchForm">
 		<label style="font-size: large;">Run-Date:</label>
 		<input type="date" id="runDate" />
-		
+
 		<label style="font-size: large; padding-left: 1%">Job Name:</label>
 		<select name="jobName" id="jobName">
 			<option value="">Choose Job Name</option>
@@ -14,12 +14,13 @@
 				<option value="${alertData.jobName}">${alertData.jobName}</option>
 			</c:forEach>
 		</select>
-		
+
 		<input type="submit" id="search" value="Search"
 			class="btn btn-success" onclick="" />
 		<input type="reset" id="reset" value="Reset" class="btn btn-success" />
 		<hr />
-		
+
+
 		<label style="font-size: medium;">New Alerts</label>
 		<div id="table1" style="width: 100%; height: 50%; overflow: auto;">
 			<table class="table table-striped">
@@ -51,12 +52,12 @@
 				<tbody>
 					<c:forEach items="${alertDataList}" var="alertData">
 						<tr>
-							<td>${alertData.ewsID}</td>
+							<td>${alertData.ewsId}</td>
 							<td><fmt:formatDate value="${alertData.rundate}"
 									pattern="dd/MM/yyyy" /></td>
 							<td>${alertData.dsId}</td>
 							<td>${alertData.jobName}</td>
-							<td>${alertData.testID}</td>
+							<td>${alertData.testId}</td>
 							<td>${alertData.testCaseDescription}</td>
 							<td>${alertData.priorResult}</td>
 							<td>${alertData.minResult}</td>
@@ -83,8 +84,7 @@
 									<option value="Open">Open</option>
 									<option value="Pending">Pending</option>
 									<option value="Resolved">Resolved</option>
-								</select>
-							</td>
+							</select></td>
 							<td><input type="text" value="${alertData.owner}"></td>
 							<td><a type="button" class="btn btn-success"
 								href="/update-alerts?${alertData}">Update</a></td>

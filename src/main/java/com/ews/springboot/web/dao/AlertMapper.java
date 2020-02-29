@@ -13,7 +13,7 @@ import com.ews.springboot.web.model.Alerts;
 @Mapper
 public interface AlertMapper {
 
-	@Select("select EWS_ID,Rundate,DSID,JobName,TestID,TestCaseDescription,PriorResult,MinResult,Result,MaxResult,"
+	@Select("select EWSID,Rundate,DSID,JobName,TestID,TestCaseDescription,PriorResult,MinResult,Result,MaxResult,"
 			+ "TestStatus,Classification,Measure,Summary,DetailComments,Severity,RallyDefect,ServiceNowTix,Status,Owner,"
 			+ "Resolution_PlanToClose\r\n" + " from  CommandCenter_EWS_EarlyWarningSystem\r\n"
 			+ "	where rundate >= #{runDate}\r\n" + " and Classification is null\r\n"

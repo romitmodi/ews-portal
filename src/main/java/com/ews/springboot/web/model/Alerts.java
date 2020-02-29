@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Alerts {
 
-	private int ewsID;
+	private int ewsId;
 	private int dsId;
 	private String jobName;
 	private String jobDescription;
 	private String executionStep;
-	private int testID;
+	private int testId;
 	private String testCaseDescription;
 	private String testScriptActual;
 	private String priorResult;
@@ -30,12 +30,12 @@ public class Alerts {
 	private String owner;
 	private String resolutionPlanToClose;
 
-	public int getEwsID() {
-		return ewsID;
+	public int getEwsId() {
+		return ewsId;
 	}
 
-	public void setEwsID(int ewsID) {
-		this.ewsID = ewsID;
+	public void setEwsId(int ewsId) {
+		this.ewsId = ewsId;
 	}
 
 	public int getDsId() {
@@ -70,12 +70,12 @@ public class Alerts {
 		this.executionStep = executionStep;
 	}
 
-	public int getTestID() {
-		return testID;
+	public int getTestId() {
+		return testId;
 	}
 
-	public void setTestID(int testID) {
-		this.testID = testID;
+	public void setTestId(int testId) {
+		this.testId = testId;
 	}
 
 	public String getTestCaseDescription() {

@@ -1,7 +1,7 @@
 DROP TABLE CommandCenter_EWS_EarlyWarningSystem;
 
 CREATE TABLE CommandCenter_EWS_EarlyWarningSystem (
-		EWS_ID	int PRIMARY KEY ,
+		EWSID	int PRIMARY KEY ,
 		DSID	int,
 		JobName	varchar2(30),
 		JobDescription	varchar2(50),
