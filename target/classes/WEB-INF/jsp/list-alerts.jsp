@@ -77,10 +77,17 @@
 							<td><input type="text" value="${alertData.severity}"></td>
 							<td><input type="text" value="${alertData.rallyDefect}"></td>
 							<td><input type="text" value="${alertData.serviceNowTix}"></td>
-							<td><input type="text" value="${alertData.status}"></td>
+							<td><input type="hidden" value="${alertData.status}">
+								<select onchange="">
+									<option value=""></option>
+									<option value="Open">Open</option>
+									<option value="Pending">Pending</option>
+									<option value="Resolved">Resolved</option>
+								</select>
+							</td>
 							<td><input type="text" value="${alertData.owner}"></td>
 							<td><a type="button" class="btn btn-success"
-								href="/update-alert?id=${alertData.ewsID}">Update</a></td>
+								href="/update-alerts?${alertData}">Update</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

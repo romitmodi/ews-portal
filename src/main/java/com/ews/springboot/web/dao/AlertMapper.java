@@ -26,7 +26,7 @@ public interface AlertMapper {
 			+ "	order by JobName")
 	List<Alerts> getAlertDataBasedOnStatus();
 
-	@Update("update ds.CommandCenter_EWS_EarlyWarningSystem\r\n"
+	@Update("update CommandCenter_EWS_EarlyWarningSystem\r\n"
 			+ "    set    Classification=#{alert.classification},\r\n" + "           Measure=#{alert.measure},\r\n"
 			+ "           Summary=#{alert.summary},\r\n" + "           DetailComments=#{alert.detailComments},\r\n"
 			+ "           Severity=#{alert.severity},\r\n" + "           RallyDefect=#{alert.rallyDefect},\r\n"

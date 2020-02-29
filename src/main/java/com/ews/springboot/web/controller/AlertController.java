@@ -39,9 +39,10 @@ public class AlertController {
 		return "list-alerts";
 	}
 
-	@RequestMapping(value = "/update-alerts", method = RequestMethod.POST)
+	@RequestMapping(value = "/update-alerts", method = RequestMethod.GET)
 	public String updateAlertDetails(ModelMap modelMap, @Valid Alerts alerts) {
 		service.updateAlertDetails(alerts);
+		this.getAlertList(modelMap, null);
 		return "list-alerts";
 	}
 }
