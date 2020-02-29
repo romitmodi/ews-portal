@@ -20,6 +20,13 @@ public interface AlertMapper {
 			+ "	order by rundate desc, jobname, testid")
 	List<Alerts> getAlertData(@Param("runDate") Date RunDate);
 
+	@Select("select EWS_ID AS EWSID,Rundate,DSID,JobName,TestID,TestCaseDescription,PriorResult,MinResult,Result,MaxResult,"
+			+ "TestStatus,Classification,Measure,Summary,DetailComments,Severity,RallyDefect,ServiceNowTix,Status,Owner,"
+			+ "Resolution_PlanToClose\r\n" + " from  CommandCenter_EWS_EarlyWarningSystem\r\n"
+			+ "	where rundate >= #{runDate}\r\n" + " and Classification is null\r\n" + "AND JobName=#{jobName}"
+			+ "	order by rundate desc, jobname, testid")
+	List<Alerts> getAlertDataWithFilter(@Param("jobName") String jobName, @Param("runDate") Date RunDate);
+
 	@Select("select Jobname, JobDescription, rundate as createdate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose,  count(*) as Teststeps  "
 			+ "from  CommandCenter_EWS_EarlyWarningSystem\r\n" + "	where status not in ('Closed')\r\n"
 			+ "	group by Jobname, JobDescription, rundate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose\r\n"

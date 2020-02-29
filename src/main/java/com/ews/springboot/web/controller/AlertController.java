@@ -35,7 +35,7 @@ public class AlertController {
 	public String getAlertList(ModelMap model, @ModelAttribute("runDate") String runDate,
 			@ModelAttribute("jobName") String jobName) throws ParseException {
 		model.put("alertDataList", service
-				.getAlertListbyRunDate(runDate == null || runDate.isEmpty() ? new Date() : dateFormat2.parse(runDate)));
+				.getAlertListbyRunDate(jobName,(runDate == null || runDate.isEmpty() ? new Date() : dateFormat2.parse(runDate))));
 		model.put("alertDataListByStatus", service.getAlertListbyStatus());
 		return "list-alerts";
 	}

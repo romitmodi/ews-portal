@@ -15,8 +15,11 @@ public class AlertService {
 	@Autowired
 	private AlertMapper alertMapper;
 
-	public List<Alerts> getAlertListbyRunDate(Date runDate) {
-		return alertMapper.getAlertData(runDate);
+	public List<Alerts> getAlertListbyRunDate(String jobName, Date runDate) {
+		if (jobName == null || jobName.isEmpty() || jobName.equalsIgnoreCase("")) {
+			return alertMapper.getAlertData(runDate);
+		}
+		return alertMapper.getAlertDataWithFilter(jobName, runDate);
 	}
 
 	public List<Alerts> getAlertListbyStatus() {
