@@ -64,8 +64,8 @@
 							<td>${alertData.result}</td>
 							<td>${alertData.maxResult}</td>
 							<td>${alertData.testStatus}</td>
-							<td><input type="hidden" value="${alertData.classification}">
-								<select onchange="">
+							<td><input type="text" value="${alertData.classification}">
+								<select hidden="true" onchange="">
 									<option value=""></option>
 									<option value="Accept">Accept</option>
 									<option value="Known Issue">Known Issue</option>
@@ -78,8 +78,8 @@
 							<td><input type="text" value="${alertData.severity}"></td>
 							<td><input type="text" value="${alertData.rallyDefect}"></td>
 							<td><input type="text" value="${alertData.serviceNowTix}"></td>
-							<td><input type="hidden" value="${alertData.status}">
-								<select onchange="">
+							<td><input type="text" value="${alertData.status}">
+								<select hidden="true" onchange="">
 									<option value=""></option>
 									<option value="Open">Open</option>
 									<option value="Pending">Pending</option>
@@ -116,8 +116,8 @@
 						<tr>
 							<td>${alertData.jobName}</td>
 							<td>${alertData.jobDescription}</td>
-							<td><input type="hidden" value="${alertData.status}">
-								<select onchange="">
+							<td><input type="text" value="${alertData.status}">
+								<select hidden="true" onchange="">
 									<option value=""></option>
 									<option value="Open">Open</option>
 									<option value="Pending">Pending</option>
