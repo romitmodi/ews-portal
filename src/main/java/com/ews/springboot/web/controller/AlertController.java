@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ews.springboot.web.model.Alerts;
 import com.ews.springboot.web.service.AlertService;
@@ -34,14 +36,14 @@ public class AlertController {
 	@RequestMapping(value = "/list-alerts", method = RequestMethod.GET)
 	public String getAlertList(ModelMap model, @ModelAttribute("runDate") String runDate,
 			@ModelAttribute("jobName") String jobName) throws ParseException {
-		model.put("alertDataList", service
-				.getAlertListbyRunDate(jobName,(runDate == null || runDate.isEmpty() ? new Date() : dateFormat2.parse(runDate))));
+		model.put("alertDataList", service.getAlertListbyRunDate(jobName,
+				(runDate == null || runDate.isEmpty() ? new Date() : dateFormat2.parse(runDate))));
 		model.put("alertDataListByStatus", service.getAlertListbyStatus());
 		return "list-alerts";
 	}
 
-	@RequestMapping(value = "/update-alerts/{alertData}", method = RequestMethod.GET)
-	public String updateAlertDetails(ModelMap modelMap, @PathVariable("alertData") Alerts alertData)
+	@RequestMapping(value = "/update-alerts", method = RequestMethod.GET)
+	public String updateAlertDetails(ModelMap modelMap, @RequestParam(value = "alertData") Alerts alertData)
 			throws ParseException {
 		service.updateAlertDetails(alertData);
 		this.getAlertList(modelMap, null, null);

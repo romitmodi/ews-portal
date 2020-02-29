@@ -87,7 +87,7 @@
 							</select></td>
 							<td><input type="text" value="${alertData.owner}"></td>
 							<td><a type="button" class="btn btn-success"
-								href="/update-alerts?${alertData}">Update</a></td>
+								href="/update-alerts?alertData=${alertData}">Update</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -131,7 +131,7 @@
 								value="${alertData.resolutionPlanToClose}"></td>
 							<td>${alertData.executionStep}</td>
 							<td><a type="button" class="btn btn-success"
-								href="/update-alerts?${alertData}">Update</a></td>
+								href="/update-alerts?alertData=${alertData}">Update</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
