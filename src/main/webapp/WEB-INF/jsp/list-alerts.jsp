@@ -3,9 +3,9 @@
 <%@ include file="common/navigation.jspf"%>
 
 <div class="container">
-	<form:form id="searchForm">
+	<form:form id="searchForm" method="GET">
 		<label style="font-size: large;">Run-Date:</label>
-		<input type="date" id="runDate" />
+		<input type="date" id="runDate" name="runDate" />
 
 		<label style="font-size: large; padding-left: 1%">Job Name:</label>
 		<select name="jobName" id="jobName">
@@ -16,8 +16,8 @@
 		</select>
 
 		<input type="submit" id="search" value="Search"
-			class="btn btn-success" onclick="" />
-		<input type="reset" id="reset" value="Reset" class="btn btn-success" />
+			class="btn btn-success" />
+		<input type="reset" id="reset" value="Reset" class="btn btn-warning" />
 		<hr />
 
 
