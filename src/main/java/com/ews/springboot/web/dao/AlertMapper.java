@@ -13,7 +13,7 @@ import com.ews.springboot.web.model.Alerts;
 @Mapper
 public interface AlertMapper {
 
-	@Select("select EWSID,Rundate,DSID,JobName,TestID,TestCaseDescription,PriorResult,MinResult,Result,MaxResult,"
+	@Select("select EWS_ID AS EWSID,Rundate,DSID,JobName,TestID,TestCaseDescription,PriorResult,MinResult,Result,MaxResult,"
 			+ "TestStatus,Classification,Measure,Summary,DetailComments,Severity,RallyDefect,ServiceNowTix,Status,Owner,"
 			+ "Resolution_PlanToClose\r\n" + " from  CommandCenter_EWS_EarlyWarningSystem\r\n"
 			+ "	where rundate >= #{runDate}\r\n" + " and Classification is null\r\n"
@@ -26,10 +26,10 @@ public interface AlertMapper {
 			+ "	order by JobName")
 	List<Alerts> getAlertDataBasedOnStatus();
 
-	@Update("update CommandCenter_EWS_EarlyWarningSystem\r\n"
-			+ "    set    Classification=#{alert.classification},\r\n" + "           Measure=#{alert.measure},\r\n"
-			+ "           Summary=#{alert.summary},\r\n" + "           DetailComments=#{alert.detailComments},\r\n"
-			+ "           Severity=#{alert.severity},\r\n" + "           RallyDefect=#{alert.rallyDefect},\r\n"
+	@Update("update CommandCenter_EWS_EarlyWarningSystem\r\n" + "    set    Classification=#{alert.classification},\r\n"
+			+ "           Measure=#{alert.measure},\r\n" + "           Summary=#{alert.summary},\r\n"
+			+ "           DetailComments=#{alert.detailComments},\r\n" + "           Severity=#{alert.severity},\r\n"
+			+ "           RallyDefect=#{alert.rallyDefect},\r\n"
 			+ "           ServiceNowTix=#{alert.serviceNowTix},\r\n" + "           Status=#{alert.status},\r\n"
 			+ "           Owner=#{alert.owner},\r\n"
 			+ "           Resolution_PlanToClose=#{alert.resolutionPlanToClose}\r\n"
