@@ -2,7 +2,7 @@
 <%@ include file="common/header.jspf"%>
 <%@ include file="common/navigation.jspf"%>
 
-<div class="container">
+<div style="padding-left: 15;padding-right: 15;">
 	<form:form id="searchForm" method="GET">
 		<label style="font-size: large;">Run-Date:</label>
 		<input type="date" id="runDate" name="runDate" />
