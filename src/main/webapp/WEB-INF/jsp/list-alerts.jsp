@@ -2,7 +2,7 @@
 <%@ include file="common/header.jspf"%>
 <%@ include file="common/navigation.jspf"%>
 
-<div style="padding-left: 15;padding-right: 15;">
+<div style="padding-left: 15; padding-right: 15;">
 	<form:form id="searchForm" method="GET">
 		<label style="font-size: large;">Run-Date:</label>
 		<input type="date" id="runDate" name="runDate" />
@@ -87,7 +87,7 @@
 							</select></td>
 							<td><input type="text" value="${alertData.owner}"></td>
 							<td><a type="button" class="btn btn-success"
-								href="/update-alerts?alertData=${alertData}">Update</a></td>
+								href="/update-alert?ewsId=${alertData.ewsId}">Update</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -131,7 +131,7 @@
 								value="${alertData.resolutionPlanToClose}"></td>
 							<td>${alertData.executionStep}</td>
 							<td><a type="button" class="btn btn-success"
-								href="/update-alerts?alertData=${alertData}">Update</a></td>
+								href="/update-alert?ewsId=${alertData.ewsId}"">Update</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

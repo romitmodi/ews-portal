@@ -4,30 +4,29 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.CustomEditorConfigurer;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.beanvalidation.CustomValidatorBean;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ews.springboot.web.model.Alerts;
 import com.ews.springboot.web.service.AlertService;
-import com.fasterxml.jackson.databind.ser.PropertyBuilder;
 
 @Controller
 public class AlertController {
 
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	private static SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+
 	@Autowired
 	AlertService service;
 
@@ -45,11 +44,15 @@ public class AlertController {
 		return "list-alerts";
 	}
 
-	@RequestMapping(value = "/update-alerts", method = RequestMethod.GET)
-	public String updateAlertDetails(ModelMap modelMap, @ModelAttribute("alertData") Alerts alertData)
-			throws ParseException {
+	@RequestMapping(value = "/update-alert", method = RequestMethod.GET)
+	public String updateAlertDetails(ModelMap modelMap, @RequestParam int ewsId) {
+		modelMap.put("alertData", service.getAlertDetails(ewsId));
+		return "alertDetails";
+	}
+
+	@RequestMapping(value = "/update-alert", method = RequestMethod.POST)
+	public String updateAlertDetails(ModelMap modelMap, @Valid Alerts alertData, BindingResult result) {
 		service.updateAlertDetails(alertData);
-		this.getAlertList(modelMap, null, null);
-		return "list-alerts";
+		return "redirect:/list-alerts";
 	}
 }

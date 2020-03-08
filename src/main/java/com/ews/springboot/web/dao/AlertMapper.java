@@ -33,6 +33,9 @@ public interface AlertMapper {
 			+ "	order by JobName")
 	List<Alerts> getAlertDataBasedOnStatus();
 
+	@Select("SELECT * FROM CommandCenter_EWS_EarlyWarningSystem WHERE EWS_ID=#{ewsId}")
+	Alerts getAlertDetails(@Param("ewsId") int ewsId);
+
 	@Update("update CommandCenter_EWS_EarlyWarningSystem\r\n" + "    set    Classification=#{alert.classification},\r\n"
 			+ "           Measure=#{alert.measure},\r\n" + "           Summary=#{alert.summary},\r\n"
 			+ "           DetailComments=#{alert.detailComments},\r\n" + "           Severity=#{alert.severity},\r\n"

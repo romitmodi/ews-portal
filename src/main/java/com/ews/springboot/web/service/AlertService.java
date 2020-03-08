@@ -26,6 +26,10 @@ public class AlertService {
 		return alertMapper.getAlertDataBasedOnStatus();
 	}
 
+	public Alerts getAlertDetails(int ewsId) {
+		return alertMapper.getAlertDetails(ewsId);
+	}
+
 	public void updateAlertDetails(Alerts alerts) {
 		alertMapper.updateAlertDetails(alerts);
 	}
