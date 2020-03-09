@@ -70,7 +70,7 @@ public class AlertController {
 	
 	@RequestMapping(value = "/get-Details", method = RequestMethod.POST)
 	public String getAlertDetail(ModelMap modelMap, @Valid Alerts alertData, BindingResult result) {
-		service.updateAlertDetails(alertData);
+		service.updateAlertDetail(alertData);
 		return "redirect:/list-alerts";
 	}
 }

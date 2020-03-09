@@ -50,19 +50,22 @@ public interface AlertMapper {
 			+ "count(*) as executionStep  " + "from  DS.CommandCenter_EWS_EarlyWarningSystem\r\n"
 			+ "	where status not in ('Closed')\r\n"
 			+ "	group by Jobname, JobDescription, rundate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose\r\n"
-			+ "	) T WHERE T.Jobname=#{jobName} "
-			+ "AND T.JobDescription=#{jobDescription} "
-			+ "AND T.status=#{status} "
-			+ "AND T.measure=#{measure} "
-			+ "AND T.summary=#{summary}"
-			+ "AND T.detailcomments=#{detailComments} "
+			+ "	) T WHERE T.Jobname=#{jobName} " + "AND T.JobDescription=#{jobDescription} " + "AND T.status=#{status} "
+			+ "AND T.measure=#{measure} " + "AND T.summary=#{summary}" + "AND T.detailcomments=#{detailComments} "
 			+ "AND T.owner=#{owner} "
-			//+ "AND T.Resolution_PlanToClose=#{resolutionPlanToClose} "
-			+ "AND T.executionStep=#{executionStep} "
-			+ "AND T.runDate=#{runDate}")
+			// + "AND T.Resolution_PlanToClose=#{resolutionPlanToClose} "
+			+ "AND T.executionStep=#{executionStep} " + "AND T.runDate=#{runDate}")
 	Alerts getAlertDetail(@Param("jobName") String jobName, @Param("jobDescription") String jobDescription,
 			@Param("status") String status, @Param("measure") String measure, @Param("summary") String summary,
 			@Param("detailComments") String detailComments, @Param("owner") String owner,
 			@Param("resolutionPlanToClose") String resolutionPlanToClose, @Param("executionStep") int executionStep,
 			@Param("runDate") Date runDate);
+
+	@Update("update DS.CommandCenter_EWS_EarlyWarningSystem\r\n" + "    set\r\n"
+			+ "           Measure=#{alert.measure},\r\n" + "           Summary=#{alert.summary},\r\n"
+			+ "           DetailComments=#{alert.detailComments},\r\n" + "           Status=#{alert.status},\r\n"
+			+ "           Owner=#{alert.owner},\r\n"
+			+ "           Resolution_PlanToClose=#{alert.resolutionPlanToClose}\r\n"
+			+ "    where rundate = #{alert.rundate} and jobname = #{alert.jobName}")
+	void updateAlertDetail(@Param("alert") Alerts alerts);
 }

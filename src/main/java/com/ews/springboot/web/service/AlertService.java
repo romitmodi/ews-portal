@@ -39,5 +39,9 @@ public class AlertService {
 		return alertMapper.getAlertDetail(jobName, jobDescription, status, measure, summary, detailComments, owner,
 				resolutionPlanToClose, executionStep,runDate);
 	}
+	
+	public void updateAlertDetail(Alerts alerts) {
+		alertMapper.updateAlertDetail(alerts);
+	}
 
 }
