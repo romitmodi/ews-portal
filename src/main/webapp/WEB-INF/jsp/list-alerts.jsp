@@ -64,27 +64,14 @@
 						<td>${alertData.result}</td>
 						<td>${alertData.maxResult}</td>
 						<td>${alertData.testStatus}</td>
-						<td><input type="text" value="${alertData.classification}">
-							<select hidden="true" onchange="">
-								<option value=""></option>
-								<option value="Accept">Accept</option>
-								<option value="Known Issue">Known Issue</option>
-								<option value="Test">Test</option>
-								<option value="Defect">Defect</option>
-						</select></td>
+						<td><input type="text" value="${alertData.classification}"></td>
 						<td><input type="text" value="${alertData.measure}"></td>
 						<td><input type="text" value="${alertData.summary}"></td>
 						<td><input type="text" value="${alertData.detailComments}"></td>
 						<td><input type="text" value="${alertData.severity}"></td>
 						<td><input type="text" value="${alertData.rallyDefect}"></td>
 						<td><input type="text" value="${alertData.serviceNowTix}"></td>
-						<td><input type="text" value="${alertData.status}"> <select
-							hidden="true" onchange="">
-								<option value=""></option>
-								<option value="Open">Open</option>
-								<option value="Pending">Pending</option>
-								<option value="Resolved">Resolved</option>
-						</select></td>
+						<td><input type="text" value="${alertData.status}"></td>
 						<td><input type="text" value="${alertData.owner}"></td>
 						<td><a type="button" class="btn btn-success"
 							href="/update-alert?ewsId=${alertData.ewsId}">Update</a></td>
@@ -116,22 +103,15 @@
 					<tr>
 						<td>${alertData.jobName}</td>
 						<td>${alertData.jobDescription}</td>
-						<td><input type="text" value="${alertData.status}"> <select
-							hidden="true" onchange="">
-								<option value=""></option>
-								<option value="Open">Open</option>
-								<option value="Pending">Pending</option>
-								<option value="Resolved">Resolved</option>
-						</select></td>
+						<td><input type="text" value="${alertData.status}"></td>
 						<td><input type="text" value="${alertData.measure}"></td>
 						<td><input type="text" value="${alertData.summary}"></td>
 						<td><input type="text" value="${alertData.detailComments}"></td>
 						<td><input type="text" value="${alertData.owner}"></td>
-						<td><input type="text"
-							value="${alertData.resolutionPlanToClose}"></td>
+						<td><input type="text" value="${alertData.resolutionPlanToClose}"></td>
 						<td>${alertData.executionStep}</td>
 						<td><a type="button" class="btn btn-success"
-							href="/update-alert?ewsId=${alertData.ewsId}">Update</a></td>
+							href="/alertDetails?alertData=${alertData}">Update</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
