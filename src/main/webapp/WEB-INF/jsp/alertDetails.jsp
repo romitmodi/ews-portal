@@ -5,41 +5,38 @@
 		<form:hidden path="ewsId" />
 		<fieldset class="form-group">
 			<form:label path="dsId">DS ID</form:label>
-			<form:input path="dsId" type="text" class="form-control" />
+			<form:input path="dsId" type="text" class="form-control" disabled="true"/>
 			<form:errors path="dsId" cssClass="text-warning" />
-			<form:label path="jobName">Job Name</form:label>
-			<form:input path="jobName" type="text" class="form-control" />
-			<form:errors path="jobName" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="jobName">Job Name</form:label>
-			<form:input path="jobName" type="text" class="form-control" />
+			<form:input path="jobName" type="text" class="form-control"/>
 			<form:errors path="jobName" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="jobDescription">Job Description</form:label>
-			<form:input path="jobDescription" type="text" class="form-control" />
+			<form:input path="jobDescription" type="text" class="form-control" disabled="true" />
 			<form:errors path="jobDescription" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="executionStep">Execution Step</form:label>
-			<form:input path="executionStep" type="text" class="form-control" />
+			<form:input path="executionStep" type="text" class="form-control" disabled="true" />
 			<form:errors path="executionStep" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="testId">Test Id</form:label>
-			<form:input path="testId" type="text" class="form-control" />
+			<form:input path="testId" type="text" class="form-control"  disabled="true" />
 			<form:errors path="testId" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="testCaseDescription">Test Case Description</form:label>
 			<form:input path="testCaseDescription" type="text"
-				class="form-control" />
+				class="form-control"  disabled="true"/>
 			<form:errors path="testCaseDescription" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="testScriptActual">Test Script Actual</form:label>
-			<form:input path="testScriptActual" type="text" class="form-control" />
+			<form:input path="testScriptActual" type="text" class="form-control"  disabled="true"/>
 			<form:errors path="testScriptActual" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
