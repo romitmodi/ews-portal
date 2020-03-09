@@ -27,7 +27,7 @@ public interface AlertMapper {
 			+ "	order by rundate desc, jobname, testid")
 	List<Alerts> getAlertDataWithFilter(@Param("jobName") String jobName, @Param("runDate") Date RunDate);
 
-	@Select("select Jobname, JobDescription, rundate as createdate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose,  count(*) as Teststeps  "
+	@Select("select Jobname, JobDescription, rundate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose,  count(*) as executionStep  "
 			+ "from  DS.CommandCenter_EWS_EarlyWarningSystem\r\n" + "	where status not in ('Closed')\r\n"
 			+ "	group by Jobname, JobDescription, rundate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose\r\n"
 			+ "	order by JobName")
@@ -45,4 +45,24 @@ public interface AlertMapper {
 			+ "           Resolution_PlanToClose=#{alert.resolutionPlanToClose}\r\n"
 			+ "    where rundate = #{alert.rundate} and jobname = #{alert.jobName}")
 	void updateAlertDetails(@Param("alert") Alerts alerts);
+
+	@Select("SELECT T.* FROM (select Jobname, JobDescription, rundate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose,  "
+			+ "count(*) as executionStep  " + "from  DS.CommandCenter_EWS_EarlyWarningSystem\r\n"
+			+ "	where status not in ('Closed')\r\n"
+			+ "	group by Jobname, JobDescription, rundate, status,  measure, summary, detailcomments, Owner,Resolution_PlanToClose\r\n"
+			+ "	) T WHERE T.Jobname=#{jobName} "
+			+ "AND T.JobDescription=#{jobDescription} "
+			+ "AND T.status=#{status} "
+			+ "AND T.measure=#{measure} "
+			+ "AND T.summary=#{summary}"
+			+ "AND T.detailcomments=#{detailComments} "
+			+ "AND T.owner=#{owner} "
+			//+ "AND T.Resolution_PlanToClose=#{resolutionPlanToClose} "
+			+ "AND T.executionStep=#{executionStep} "
+			+ "AND T.runDate=#{runDate}")
+	Alerts getAlertDetail(@Param("jobName") String jobName, @Param("jobDescription") String jobDescription,
+			@Param("status") String status, @Param("measure") String measure, @Param("summary") String summary,
+			@Param("detailComments") String detailComments, @Param("owner") String owner,
+			@Param("resolutionPlanToClose") String resolutionPlanToClose, @Param("executionStep") int executionStep,
+			@Param("runDate") Date runDate);
 }

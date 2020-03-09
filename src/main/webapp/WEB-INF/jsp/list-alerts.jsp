@@ -108,10 +108,11 @@
 						<td><input type="text" value="${alertData.summary}"></td>
 						<td><input type="text" value="${alertData.detailComments}"></td>
 						<td><input type="text" value="${alertData.owner}"></td>
-						<td><input type="text" value="${alertData.resolutionPlanToClose}"></td>
+						<td><input type="text"
+							value="${alertData.resolutionPlanToClose}"></td>
 						<td>${alertData.executionStep}</td>
 						<td><a type="button" class="btn btn-success"
-							href="/alertDetails?alertData=${alertData}">Update</a></td>
+							href="/get-Details?jobName=${alertData.jobName}&jobDescription=${alertData.jobDescription}&status=${alertData.status}&measure=${alertData.measure}&summary=${alertData.summary}&detailComments=${alertData.detailComments}&owner=${alertData.owner}&resolutionPlanToClose=${alertData.resolutionPlanToClose}&executionStep=${alertData.executionStep}&runDate=${alertData.rundate}">Update</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -3,6 +3,7 @@ package com.ews.springboot.web.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.validation.Valid;
 
@@ -26,7 +27,7 @@ public class AlertController {
 
 	private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	private static SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
-
+	private static SimpleDateFormat dateFormat3 = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
 	@Autowired
 	AlertService service;
 
@@ -52,6 +53,23 @@ public class AlertController {
 
 	@RequestMapping(value = "/update-alert", method = RequestMethod.POST)
 	public String updateAlertDetails(ModelMap modelMap, @Valid Alerts alertData, BindingResult result) {
+		service.updateAlertDetails(alertData);
+		return "redirect:/list-alerts";
+	}
+
+	@RequestMapping(value = "/get-Details", method = RequestMethod.GET)
+	public String getAlertDetail(ModelMap modelMap, @RequestParam String jobName, @RequestParam String jobDescription,
+			@RequestParam String status, @RequestParam String measure, @RequestParam String summary,
+			@RequestParam String detailComments, @RequestParam String owner, @RequestParam String resolutionPlanToClose,
+			@RequestParam int executionStep, @RequestParam String runDate) throws ParseException {
+		Alerts alerts = service.getAlertDetail(jobName, jobDescription, status, measure, summary, detailComments, owner,
+				resolutionPlanToClose, executionStep, dateFormat3.parse(runDate));
+		modelMap.put("alertData", alerts == null ? new Alerts() : alerts);
+		return "alertDetailsByStatus";
+	}
+	
+	@RequestMapping(value = "/get-Details", method = RequestMethod.POST)
+	public String getAlertDetail(ModelMap modelMap, @Valid Alerts alertData, BindingResult result) {
 		service.updateAlertDetails(alertData);
 		return "redirect:/list-alerts";
 	}

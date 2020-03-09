@@ -34,4 +34,10 @@ public class AlertService {
 		alertMapper.updateAlertDetails(alerts);
 	}
 
+	public Alerts getAlertDetail(String jobName, String jobDescription, String status, String measure, String summary,
+			String detailComments, String owner, String resolutionPlanToClose, int executionStep, Date runDate) {
+		return alertMapper.getAlertDetail(jobName, jobDescription, status, measure, summary, detailComments, owner,
+				resolutionPlanToClose, executionStep,runDate);
+	}
+
 }
